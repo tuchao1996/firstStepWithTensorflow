@@ -47,8 +47,7 @@ def preprocess_targets(california_housing_dataframe):
     return output_targets
 
 def construct_feature_columns(input_features):
-    return set([tf.feature_column.numeric_column(my_feature)
-                for my_feature in input_features])
+    return set([tf.feature_column.numeric_column(my_feature) for my_feature in input_features])
 
 def my_input_fn(features, targets, batch_size=1, shuffle=True, num_epochs=None):    
     # Convert pandas data into a dict of np arrays.
@@ -88,17 +87,9 @@ def train_nn_regression_model(
     )
     
     # Create input functions
-    training_input_fn = lambda: my_input_fn(training_examples, 
-                                            training_targets["median_house_value"], 
-                                            batch_size=batch_size)
-    predict_training_input_fn = lambda: my_input_fn(training_examples, 
-                                                    training_targets["median_house_value"], 
-                                                    num_epochs=1, 
-                                                    shuffle=False)
-    predict_validation_input_fn = lambda: my_input_fn(validation_examples, 
-                                                        validation_targets["median_house_value"], 
-                                                        num_epochs=1, 
-                                                        shuffle=False)
+    training_input_fn = lambda: my_input_fn(training_examples, training_targets["median_house_value"], batch_size=batch_size)
+    predict_training_input_fn = lambda: my_input_fn(training_examples, training_targets["median_house_value"], num_epochs=1, shuffle=False)
+    predict_validation_input_fn = lambda: my_input_fn(validation_examples, validation_targets["median_house_value"], num_epochs=1, shuffle=False)
 
     # Train the model, but do so inside a loop so that we can periodically assess
     # loss metrics.
