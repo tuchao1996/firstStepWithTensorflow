@@ -139,6 +139,7 @@ def NeuralNetwork():
     hidden_units=[10, 10]
     training_examples = preprocess_features(california_housing_dataframe.head(12000))
 
+    # 得到模型
     my_optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.0007)
     my_optimizer = tf.contrib.estimator.clip_gradients_by_norm(my_optimizer, 5.0)
     dnn_regressor = tf.estimator.DNNRegressor(
