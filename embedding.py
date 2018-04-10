@@ -89,8 +89,8 @@ def modelDNN( feature_columns, train_path, test_path ):
 def trainEmbeddingDNN( train_path, test_path ):
     f = open( 'C:/Users/tuchao1996/Desktop/terms.txt', 'r', encoding='utf8' )
     informative_terms = list( set(f.read().split()) )
+
     terms_feature_column = tf.feature_column.categorical_column_with_vocabulary_list(key="terms", vocabulary_list=informative_terms)
-    
     terms_embedding_column = tf.feature_column.embedding_column( terms_feature_column, dimension=2 )
     feature_columns = [terms_embedding_column]
 
