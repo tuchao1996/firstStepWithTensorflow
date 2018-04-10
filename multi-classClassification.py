@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+# 手写数字集mnist进行分类识别
+
 import glob
 import io
 import math
@@ -305,7 +307,7 @@ def train_nn_classification_model(
         training_log_loss = metrics.log_loss(training_targets, training_pred_one_hot)
         validation_log_loss = metrics.log_loss(validation_targets, validation_pred_one_hot)
         # Occasionally print the current loss.
-        print "  period %02d : %0.2f" % (period, validation_log_loss)
+        print( "  period %02d : %0.2f" % (period, validation_log_loss) )
         # Add the loss metrics from this period to our list.
         training_errors.append(training_log_loss)
         validation_errors.append(validation_log_loss)
